@@ -3,6 +3,8 @@ package com.cadastro.financiamentos.models;
 import java.io.Serializable;
 
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,23 +12,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TB_FINANCIAMENTO")
+@Table(name="TB_FINAN")
 public class FinanciamentoDAO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 
-	//	TABELA TB_FINANCIAMENTO
+	//	TABELA TB_FINAN
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID_FINANCIAMENTO")
 	private int idFinanciamento;
+	@Column(name = "VL_TOTAL_FINANCIAMENTO")
 	private double vlTotalFinanciamento;
+	@Column(name = "VL_ENTRADA_FINANCIAMENTO")
 	private double vlEntradaFinanciamento;
+	@Column(name = "NR_PARCELAS_FINANCIAMENTO")
 	private int nrParcelasFinanciamento;
-	private String  dtPrimeiraParcelaFinanciamento;
+	@Column(name = "DT_PRIMEIRA_PARCELA_FINANCIAMENTO")
+	private String dtPrimeiraParcelaFinanciamento;
+	@Column(name = "VL_FINANCIAMENTOTAXA")
 	private double vlFinanciamentoTaxa;
-	
-	private double dt_criacao_financiamento;
+	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
+	private String dt_criacao_financiamento;
 	
 //	TABELA TB_PARCELA
 //	private int id_parcela;
@@ -58,10 +66,10 @@ public class FinanciamentoDAO implements Serializable {
 	public void setDt_primeira_parcela_financiamento(String dt_primeira_parcela_financiamento) {
 		this.dtPrimeiraParcelaFinanciamento = dtPrimeiraParcelaFinanciamento;
 	}
-	public double getDt_criacao_financiamento() {
+	public String getDt_criacao_financiamento() {
 		return dt_criacao_financiamento;
 	}
-	public void setDt_criacao_financiamento(double dt_criacao_financiamento) {
+	public void setDt_criacao_financiamento(String dt_criacao_financiamento) {
 		this.dt_criacao_financiamento = dt_criacao_financiamento;
 	}
 	//	public int getId_parcela() {

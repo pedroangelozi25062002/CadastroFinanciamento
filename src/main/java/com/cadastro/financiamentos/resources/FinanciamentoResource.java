@@ -2,7 +2,7 @@ package com.cadastro.financiamentos.resources;
 
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,13 +38,14 @@ public class FinanciamentoResource {
 	
 	@ApiOperation(value="Retorna um financiamento unico")
 	@GetMapping("/financiamento/{idFinanciamento}")
-	public FinanciamentoDAO listaFinanciamentoUnico(@PathVariable(value="idFinanciamento") int idFinanciamento){
+	public Optional<FinanciamentoDAO> listaFinanciamentoUnico(@PathVariable(value="idFinanciamento") int idFinanciamento){
 		return financiamentoRepository.findById(idFinanciamento);
 	}
 	
 	@ApiOperation(value="Salva um Financiamento")
 	@PostMapping("/financiamento")
 	public FinanciamentoDAO salvaFinanciamento(@RequestBody  FinanciamentoDAO financiamento) {
+		
 		return financiamentoRepository.save(financiamento);
 	}
 	
