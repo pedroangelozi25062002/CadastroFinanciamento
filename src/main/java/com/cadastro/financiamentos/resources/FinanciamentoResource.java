@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cadastro.financiamentos.models.FinanciamentoDAO;
+import com.cadastro.financiamentos.dto.FinanciamentoDTO;
+import com.cadastro.financiamentos.models.FinanciamentoEntity;
 import com.cadastro.financiamentos.repository.FinanciamentoRepository;
 
 import io.swagger.annotations.Api;
@@ -32,32 +33,35 @@ public class FinanciamentoResource {
 	
 	@ApiOperation(value="Retorna uma lista de Financiamentos")
 	@GetMapping("/financiamento")
-	public List<FinanciamentoDAO> listaFinanciamento(){
+	public List<FinanciamentoEntity> listaFinanciamento(){
 		return financiamentoRepository.findAll();
 	}
 	
 	@ApiOperation(value="Retorna um financiamento unico")
 	@GetMapping("/financiamento/{idFinanciamento}")
-	public Optional<FinanciamentoDAO> listaFinanciamentoUnico(@PathVariable(value="idFinanciamento") int idFinanciamento){
+	public Optional<FinanciamentoEntity> listaFinanciamentoUnico(@PathVariable(value="idFinanciamento") Integer idFinanciamento){
 		return financiamentoRepository.findById(idFinanciamento);
 	}
 	
 	@ApiOperation(value="Salva um Financiamento")
 	@PostMapping("/financiamento")
-	public FinanciamentoDAO salvaFinanciamento(@RequestBody  FinanciamentoDAO financiamento) {
+	public void salvaFinanciamento(@RequestBody  FinanciamentoDTO financiamento) {
 		
-		return financiamentoRepository.save(financiamento);
+		FinanciamentoEntity finanEntity = new FinanciamentoEntity();
+		finanEntity = financiamento.build(financiamento);
+	    financiamentoRepository.save(finanEntity);
+	   
 	}
 	
 	@ApiOperation(value="Deleta um Financiamento")
 	@DeleteMapping("/financiamento")
-	public void deletaProduto(@RequestBody  FinanciamentoDAO financiamento) {
+	public void deletaProduto(@RequestBody  FinanciamentoEntity financiamento) {
 		financiamentoRepository.delete(financiamento);
 	}
 	
 	@ApiOperation(value="Atualiza um Financiamento")
 	@PutMapping("/financiamento")
-	public FinanciamentoDAO atualizaFinanciamento(@RequestBody  FinanciamentoDAO financiamento) {
+	public FinanciamentoEntity atualizaFinanciamento(@RequestBody  FinanciamentoEntity financiamento) {
 		return financiamentoRepository.save(financiamento);
 	}
 	 
