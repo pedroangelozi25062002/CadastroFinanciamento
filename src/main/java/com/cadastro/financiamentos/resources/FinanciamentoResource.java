@@ -51,11 +51,20 @@ public class FinanciamentoResource {
 	@ApiOperation(value="Salva um Financiamento")
 	@PostMapping("/financiamento")
 	public void salvaFinanciamento(@RequestBody  FinanciamentoDTO financiamento) {
+		if(financiamento.getnParcelas() != null) {
+			for(int i = 0; i < financiamento.getnParcelas(); ++i) {
+				
+				ParcelaEntity parcelaEntity = new ParcelaEntity();
+				parcelaRepository.save(parcelaEntity);
+				System.out.println("Parcela: " + i + " ADICIONADA A TB_PARCELA COM SUCESSO");
+			}
+			
+		}
 		
 		FinanciamentoEntity finanEntity = new FinanciamentoEntity();
 		finanEntity = financiamento.build(financiamento);
 	    financiamentoRepository.save(finanEntity);
-	   
+	    System.out.println("Financiamento adicionado na TB_FINAN com sucesso!");
 	}
 	
 	@ApiOperation(value="Deleta um Financiamento")
