@@ -1,6 +1,5 @@
 package com.cadastro.financiamentos.resources;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,20 +15,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cadastro.financiamentos.dto.FinanciamentoDTO;
+import com.cadastro.financiamentos.dto.ParcelasDTO;
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
+import com.cadastro.financiamentos.models.ParcelaEntity;
 import com.cadastro.financiamentos.repository.FinanciamentoRepository;
+import com.cadastro.financiamentos.repository.ParcelaRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value="/api/financiamento")
 @Api(value="API REST Financiamento")
 public class FinanciamentoResource {
 	
 	@Autowired
 	FinanciamentoRepository financiamentoRepository;
+	
+	@Autowired
+	ParcelaRepository parcelaRepository;
 	
 	@ApiOperation(value="Retorna uma lista de Financiamentos")
 	@GetMapping("/financiamento")
@@ -64,6 +69,7 @@ public class FinanciamentoResource {
 	public FinanciamentoEntity atualizaFinanciamento(@RequestBody  FinanciamentoEntity financiamento) {
 		return financiamentoRepository.save(financiamento);
 	}
-	 
+
+	
 
 }

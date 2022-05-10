@@ -3,13 +3,21 @@ package com.cadastro.financiamentos.models;
 import java.io.Serializable;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="TB_FINAN")
@@ -40,9 +48,10 @@ public class FinanciamentoEntity implements Serializable {
 	
 	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
 	private Date dt_criacao_financiamento;
-
+    
+	@OneToMany(mappedBy = "idParcela")
+	private List<ParcelaEntity> parcelas;
 	
-
 	public Integer getIdFinanciamento() {
 		return idFinanciamento;
 	}

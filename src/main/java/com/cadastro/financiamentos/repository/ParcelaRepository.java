@@ -8,13 +8,11 @@ import com.cadastro.financiamentos.models.FinanciamentoEntity;
 import com.cadastro.financiamentos.models.ParcelaEntity;
 
 
-public interface FinanciamentoRepository extends JpaRepository<FinanciamentoEntity, Integer> {
-	@Override
-	default Optional<FinanciamentoEntity> findById(Integer id) {
+public interface ParcelaRepository extends JpaRepository<ParcelaEntity, Integer> {
+	default Optional<ParcelaEntity> findById2(Integer idParcela) {
 
 		return null;
 	} 
-	
 	
 
 }
