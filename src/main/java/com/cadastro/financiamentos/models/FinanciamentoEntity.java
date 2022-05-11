@@ -49,7 +49,7 @@ public class FinanciamentoEntity implements Serializable {
 	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
 	private Date dt_criacao_financiamento;
     
-	@OneToMany(mappedBy = "FinanciamentoEntity", fetch = FetchType.LAZY)
+	@OneToMany
 	private List<ParcelaEntity> parcelas;
 	
 	public Integer getIdFinanciamento() {

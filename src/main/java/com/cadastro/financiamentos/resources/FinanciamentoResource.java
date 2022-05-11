@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cadastro.financiamentos.dto.FinanciamentoDTO;
-import com.cadastro.financiamentos.dto.ParcelasDTO;
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
-import com.cadastro.financiamentos.models.ParcelaEntity;
 import com.cadastro.financiamentos.repository.FinanciamentoRepository;
 import com.cadastro.financiamentos.repository.ParcelaRepository;
+import com.cadastro.financiamentos.service.FinanciamentoService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,6 +35,10 @@ public class FinanciamentoResource {
 	@Autowired
 	ParcelaRepository parcelaRepository;
 	
+
+	FinanciamentoService financiamentoService = new FinanciamentoService();
+	
+	
 	@ApiOperation(value="Retorna uma lista de Financiamentos")
 	@GetMapping("/financiamento")
 	public List<FinanciamentoEntity> listaFinanciamento(){
@@ -51,19 +54,10 @@ public class FinanciamentoResource {
 	@ApiOperation(value="Salva um Financiamento")
 	@PostMapping("/financiamento")
 	public void salvaFinanciamento(@RequestBody  FinanciamentoDTO financiamento) {
+		FinanciamentoEntity finanEntity;
 		
-		FinanciamentoEntity finanEntity = new FinanciamentoEntity();
 		finanEntity = financiamento.build(financiamento);
-
-		for(int i = 0; i < financiamento.getnParcelas(); ++i) {
-
-			ParcelaEntity parcelaEntity = new ParcelaEntity();
-		    finanEntity.getParcelas().add(parcelaEntity);
-			financiamentoRepository.save(finanEntity);
-			//parcelaRepository.save(parcelaEntity);
-			System.out.println("Parcela: " + i + " ADICIONADA A TB_PARCELA COM SUCESSO");
-			
-		}
+		financiamentoService.Salvar(financiamento);
 		
 	    System.out.println("Financiamento adicionado na TB_FINAN com sucesso!");
 	}
