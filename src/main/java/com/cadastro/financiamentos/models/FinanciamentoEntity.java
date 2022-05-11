@@ -49,7 +49,7 @@ public class FinanciamentoEntity implements Serializable {
 	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
 	private Date dt_criacao_financiamento;
     
-	@OneToMany(mappedBy = "idParcela")
+	@OneToMany(mappedBy = "FinanciamentoEntity", fetch = FetchType.LAZY)
 	private List<ParcelaEntity> parcelas;
 	
 	public Integer getIdFinanciamento() {
@@ -70,6 +70,14 @@ public class FinanciamentoEntity implements Serializable {
 
 	public Double getVlEntradaFinanciamento() {
 		return vlEntradaFinanciamento;
+	}
+
+	public List<ParcelaEntity> getParcelas() {
+		return parcelas;
+	}
+
+	public void setParcelas(List<ParcelaEntity> parcelas) {
+		this.parcelas = parcelas;
 	}
 
 	public void setVlEntradaFinanciamento(Double vlEntradaFinanciamento) {
