@@ -35,8 +35,8 @@ public class FinanciamentoResource {
 	@Autowired
 	ParcelaRepository parcelaRepository;
 	
-
-	FinanciamentoService financiamentoService = new FinanciamentoService();
+	@Autowired
+	FinanciamentoService financiamentoService;
 	
 	
 	@ApiOperation(value="Retorna uma lista de Financiamentos")
@@ -54,12 +54,8 @@ public class FinanciamentoResource {
 	@ApiOperation(value="Salva um Financiamento")
 	@PostMapping("/financiamento")
 	public void salvaFinanciamento(@RequestBody  FinanciamentoDTO financiamento) {
-		FinanciamentoEntity finanEntity;
-		
-		finanEntity = financiamento.build(financiamento);
-		financiamentoService.Salvar(financiamento);
-		
-	    System.out.println("Financiamento adicionado na TB_FINAN com sucesso!");
+		financiamentoService.salvar(financiamento);
+		System.out.println("Financiamento adicionado na TB_FINAN com sucesso!");
 	}
 	
 	@ApiOperation(value="Deleta um Financiamento")

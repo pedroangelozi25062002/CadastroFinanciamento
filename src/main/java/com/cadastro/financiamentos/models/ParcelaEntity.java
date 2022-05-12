@@ -2,13 +2,13 @@ package com.cadastro.financiamentos.models;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,8 +33,10 @@ public class ParcelaEntity implements Serializable {
 	@Column(name = "VL_JUROS_PARCELA")
 	private Double vl_juros_parcela ;
 	
-	
-	
+	 @ManyToOne
+	 @JoinColumn(name="financiamento_id")
+	 private FinanciamentoEntity financiamento;
+
 	public Integer getIdParcela() {
 		return idParcela;
 	}
@@ -43,7 +45,6 @@ public class ParcelaEntity implements Serializable {
 		this.idParcela = idParcela;
 	}
 
-	
 	public Date getDt_pagamento_parcela() {
 		return dt_pagamento_parcela;
 	}
@@ -67,6 +68,12 @@ public class ParcelaEntity implements Serializable {
 	public void setVl_juros_parcela(Double vl_juros_parcela) {
 		this.vl_juros_parcela = vl_juros_parcela;
 	}
-	
-	
+
+	public FinanciamentoEntity getFinanciamento() {
+		return financiamento;
+	}
+
+	public void setFinanciamento(FinanciamentoEntity financiamento) {
+		this.financiamento = financiamento;
+	}
 }
