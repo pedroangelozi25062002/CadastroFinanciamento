@@ -16,6 +16,10 @@ public class ParcelasDTO {
 	private Date dt_pagamento_parcela;
 
 	
+	
+
+	
+	
 
 	public Integer getIdParcela() {
 		return idParcela;
@@ -86,9 +90,9 @@ public class ParcelasDTO {
 		ParcelaEntity entityParcela = new ParcelaEntity();
 		
 		entityParcela.setIdParcela(dtoParcela.getIdParcela());
-		entityParcela.setVl_juros_parcela(dtoParcela.getVl_juros_parcela());
-		entityParcela.setVl_parcela(dtoParcela.getVl_parcela());
-		entityParcela.setDt_pagamento_parcela(dtoParcela.getDt_pagamento_parcela());
+		entityParcela.setVlJurosParcela(dtoParcela.getVl_juros_parcela());
+		entityParcela.setVlParcela(dtoParcela.getVl_parcela());
+		entityParcela.setDtPagamentoParcela(dtoParcela.getDt_pagamento_parcela());
 		
 		
 		return entityParcela;

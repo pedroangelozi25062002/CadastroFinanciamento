@@ -25,13 +25,13 @@ public class ParcelaEntity implements Serializable {
 	private Integer idParcela;
 	
 	@Column(name = "DT_PAGAMENTO_PARCELA")
-	private Date dt_pagamento_parcela ;
+	private Date dtPagamentoParcela ;
 	
 	@Column(name = "VL_PARCELA")
-	private Double vl_parcela;
+	private Double vlParcela;
 	
 	@Column(name = "VL_JUROS_PARCELA")
-	private Double vl_juros_parcela ;
+	private Double vlJurosParcela ;
 	
 	 @ManyToOne
 	 @JoinColumn(name="financiamento_id")
@@ -45,28 +45,28 @@ public class ParcelaEntity implements Serializable {
 		this.idParcela = idParcela;
 	}
 
-	public Date getDt_pagamento_parcela() {
-		return dt_pagamento_parcela;
+	public Date getDtPagamentoParcela() {
+		return dtPagamentoParcela;
 	}
 
-	public void setDt_pagamento_parcela(Date dt_pagamento_parcela) {
-		this.dt_pagamento_parcela = dt_pagamento_parcela;
+	public void setDtPagamentoParcela(Date dtPagamentoParcela) {
+		this.dtPagamentoParcela = dtPagamentoParcela;
 	}
 
-	public Double getVl_parcela() {
-		return vl_parcela;
+	public Double getVlParcela() {
+		return vlParcela;
 	}
 
-	public void setVl_parcela(Double vl_parcela) {
-		this.vl_parcela = vl_parcela;
+	public void setVlParcela(Double vlParcela) {
+		this.vlParcela = vlParcela;
 	}
 
-	public Double getVl_juros_parcela() {
-		return vl_juros_parcela;
+	public Double getVlJurosParcela() {
+		return vlJurosParcela;
 	}
 
-	public void setVl_juros_parcela(Double vl_juros_parcela) {
-		this.vl_juros_parcela = vl_juros_parcela;
+	public void setVlJurosParcela(Double vlJurosParcela) {
+		this.vlJurosParcela = vlJurosParcela;
 	}
 
 	public FinanciamentoEntity getFinanciamento() {

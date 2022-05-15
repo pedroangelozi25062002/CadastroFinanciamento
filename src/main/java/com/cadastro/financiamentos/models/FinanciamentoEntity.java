@@ -41,7 +41,7 @@ public class FinanciamentoEntity implements Serializable {
 	private Double vlFinanciamentoTaxa;
 	
 	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
-	private Date dt_criacao_financiamento;
+	private Date dtCriacaoFinanciamento;
     
 	
 	 @OneToMany(mappedBy = "financiamento", targetEntity = ParcelaEntity.class, fetch = FetchType.LAZY)
@@ -108,13 +108,13 @@ public class FinanciamentoEntity implements Serializable {
 	}
 
 
-	public Date getDt_criacao_financiamento() {
-		return dt_criacao_financiamento;
+	public Date getDtCriacaoFinanciamento() {
+		return dtCriacaoFinanciamento;
 	}
 
 
-	public void setDt_criacao_financiamento(Date dt_criacao_financiamento) {
-		this.dt_criacao_financiamento = dt_criacao_financiamento;
+	public void setDtCriacaoFinanciamento(Date dtCriacaoFinanciamento) {
+		this.dtCriacaoFinanciamento = dtCriacaoFinanciamento;
 	}
 
 

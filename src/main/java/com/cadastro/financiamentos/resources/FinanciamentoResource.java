@@ -1,5 +1,6 @@
 package com.cadastro.financiamentos.resources;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +54,7 @@ public class FinanciamentoResource {
 	
 	@ApiOperation(value="Salva um Financiamento")
 	@PostMapping("/financiamento")
-	public void salvaFinanciamento(@RequestBody  FinanciamentoDTO financiamento) {
+	public void salvaFinanciamento(@RequestBody  FinanciamentoDTO financiamento) throws ParseException {
 		financiamentoService.salvar(financiamento);
 		System.out.println("Financiamento adicionado na TB_FINAN com sucesso!");
 	}
