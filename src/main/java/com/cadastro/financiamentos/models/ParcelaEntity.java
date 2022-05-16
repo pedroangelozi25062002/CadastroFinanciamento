@@ -1,6 +1,7 @@
 package com.cadastro.financiamentos.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -31,7 +32,7 @@ public class ParcelaEntity implements Serializable {
 	private Double vlParcela;
 	
 	@Column(name = "VL_JUROS_PARCELA")
-	private Double vlJurosParcela ;
+	private BigDecimal vlJurosParcela ;
 	
 	 @ManyToOne
 	 @JoinColumn(name="financiamento_id")
@@ -61,11 +62,11 @@ public class ParcelaEntity implements Serializable {
 		this.vlParcela = vlParcela;
 	}
 
-	public Double getVlJurosParcela() {
+	public BigDecimal getVlJurosParcela() {
 		return vlJurosParcela;
 	}
 
-	public void setVlJurosParcela(Double vlJurosParcela) {
+	public void setVlJurosParcela(BigDecimal vlJurosParcela) {
 		this.vlJurosParcela = vlJurosParcela;
 	}
 

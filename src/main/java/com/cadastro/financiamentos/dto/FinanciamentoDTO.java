@@ -1,31 +1,32 @@
 package com.cadastro.financiamentos.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
 
 public class FinanciamentoDTO {
 
-	private Double valorFinanciamento;
+	private BigDecimal valorFinanciamento;
 	
 	private Double valorParcelas;
 	
-	private Double valorFinanciamentoTaxa;
+	private BigDecimal valorFinanciamentoTaxa;
 	
-	private Integer nParcelas;
+	private BigDecimal nParcelas;
 	
 	private Date dataPrimeiraParcela;
 	
 	
 	
 	
-	public Double getValorFinanciamento() {
+	public BigDecimal getValorFinanciamento() {
 		return valorFinanciamento;
 	}
 
 
 
-	public void setValorFinanciamento(Double valorFinanciamento) {
+	public void setValorFinanciamento(BigDecimal valorFinanciamento) {
 		this.valorFinanciamento = valorFinanciamento;
 	}
 
@@ -43,13 +44,13 @@ public class FinanciamentoDTO {
 
 
 
-	public Integer getnParcelas() {
+	public BigDecimal getnParcelas() {
 		return nParcelas;
 	}
 
 
 
-	public void setnParcelas(Integer nParcelas) {
+	public void setnParcelas(BigDecimal nParcelas) {
 		this.nParcelas = nParcelas;
 	}
 
@@ -68,13 +69,13 @@ public class FinanciamentoDTO {
 
 
 
-	public Double getValorFinanciamentoTaxa() {
+	public BigDecimal getValorFinanciamentoTaxa() {
 		return valorFinanciamentoTaxa;
 	}
 
 
 
-	public void setValorFinanciamentoTaxa(Double valorFinanciamentoTaxa) {
+	public void setValorFinanciamentoTaxa(BigDecimal valorFinanciamentoTaxa) {
 		this.valorFinanciamentoTaxa = valorFinanciamentoTaxa;
 	}
 

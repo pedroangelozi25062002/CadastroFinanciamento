@@ -1,5 +1,6 @@
 package com.cadastro.financiamentos.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
@@ -11,7 +12,7 @@ public class ParcelasDTO {
 	
 	private Double vl_parcela;
 	
-	private Double vl_juros_parcela;
+	private BigDecimal vl_juros_parcela;
 		
 	private Date dt_pagamento_parcela;
 
@@ -53,7 +54,7 @@ public class ParcelasDTO {
 
 
 
-	public Double getVl_juros_parcela() {
+	public BigDecimal getVl_juros_parcela() {
 		return vl_juros_parcela;
 	}
 
@@ -61,7 +62,7 @@ public class ParcelasDTO {
 
 
 
-	public void setVl_juros_parcela(Double vl_juros_parcela) {
+	public void setVl_juros_parcela(BigDecimal vl_juros_parcela) {
 		this.vl_juros_parcela = vl_juros_parcela;
 	}
 

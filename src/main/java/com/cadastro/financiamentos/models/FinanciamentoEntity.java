@@ -1,6 +1,7 @@
 package com.cadastro.financiamentos.models;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -26,19 +27,19 @@ public class FinanciamentoEntity implements Serializable {
 	private Integer idFinanciamento;
 	
 	@Column(name = "VL_TOTAL_FINANCIAMENTO")
-	private Double vlTotalFinanciamento;
+	private BigDecimal vlTotalFinanciamento;
 	
 	@Column(name = "VL_ENTRADA_FINANCIAMENTO")
 	private Double vlEntradaFinanciamento;
 	
 	@Column(name = "NR_PARCELAS_FINANCIAMENTO")
-	private Integer nrParcelasFinanciamento;
+	private BigDecimal nrParcelasFinanciamento;
 	
 	@Column(name = "DT_PRIMEIRA_PARCELA_FINANCIAMENTO")
 	private Date dtPrimeiraParcelaFinanciamento;
 	
 	@Column(name = "VL_FINANCIAMENTOTAXA")
-	private Double vlFinanciamentoTaxa;
+	private BigDecimal vlFinanciamentoTaxa;
 	
 	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
 	private Date dtCriacaoFinanciamento;
@@ -58,12 +59,12 @@ public class FinanciamentoEntity implements Serializable {
 	}
 
 
-	public Double getVlTotalFinanciamento() {
+	public BigDecimal getVlTotalFinanciamento() {
 		return vlTotalFinanciamento;
 	}
 
 
-	public void setVlTotalFinanciamento(Double vlTotalFinanciamento) {
+	public void setVlTotalFinanciamento(BigDecimal vlTotalFinanciamento) {
 		this.vlTotalFinanciamento = vlTotalFinanciamento;
 	}
 
@@ -78,12 +79,12 @@ public class FinanciamentoEntity implements Serializable {
 	}
 
 
-	public Integer getNrParcelasFinanciamento() {
+	public BigDecimal getNrParcelasFinanciamento() {
 		return nrParcelasFinanciamento;
 	}
 
 
-	public void setNrParcelasFinanciamento(Integer nrParcelasFinanciamento) {
+	public void setNrParcelasFinanciamento(BigDecimal nrParcelasFinanciamento) {
 		this.nrParcelasFinanciamento = nrParcelasFinanciamento;
 	}
 
@@ -98,13 +99,13 @@ public class FinanciamentoEntity implements Serializable {
 	}
 
 
-	public Double getVlFinanciamentoTaxa() {
+	public BigDecimal getVlFinanciamentoTaxa() {
 		return vlFinanciamentoTaxa;
 	}
 
 
-	public void setVlFinanciamentoTaxa(Double vlFinanciamentoTaxa) {
-		this.vlFinanciamentoTaxa = vlFinanciamentoTaxa;
+	public void setVlFinanciamentoTaxa(BigDecimal bigDecimal) {
+		this.vlFinanciamentoTaxa = bigDecimal;
 	}
 
 

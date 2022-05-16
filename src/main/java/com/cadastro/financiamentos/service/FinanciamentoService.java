@@ -1,5 +1,6 @@
 package com.cadastro.financiamentos.service;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -12,6 +13,7 @@ import com.cadastro.financiamentos.models.FinanciamentoEntity;
 import com.cadastro.financiamentos.models.ParcelaEntity;
 import com.cadastro.financiamentos.repository.FinanciamentoRepository;
 import com.cadastro.financiamentos.repository.ParcelaRepository;
+import com.cadastro.financiamentos.util.CalculoUtil;
 import com.cadastro.financiamentos.util.DateUtils;
 
 @Component
@@ -29,11 +31,14 @@ public class FinanciamentoService {
 
 	public void salvar(FinanciamentoDTO financiamento) throws ParseException {
 
+		
 		FinanciamentoEntity finanEntity = financiamento.build(financiamento);
 
-	    financiamentoRepository.save(finanEntity);
+	    CalculoUtil calculoUtil = new CalculoUtil();
+		
+		financiamentoRepository.save(finanEntity);
 
-		for (int i = 0; i < financiamento.getnParcelas(); ++i) {
+		for (int i = 0; i < financiamento.getnParcelas().intValue(); ++i) {
 			
 			ParcelaEntity parcelaEntity = new ParcelaEntity();
 			
@@ -49,12 +54,21 @@ public class FinanciamentoService {
 			
 			parcelaRepository.save(parcelaEntity);
 
-			System.out.println("Parcela: " + i + " ADICIONADA A TB_PARCELA COM SUCESSO");
+			System.out.println("ADICIONADA A TB_PARCELA COM SUCESSO");
 		}
 		
 		
+		//CalculoJurosCompostos
+		BigDecimal nrParc = financiamento.getnParcelas();		
+		BigDecimal vlTaxaa = financiamento.getValorFinanciamentoTaxa();
+		BigDecimal vlFinan = financiamento.getValorFinanciamento();
+		
+		BigDecimal vlResult = vlFinan.multiply(vlTaxaa).multiply(nrParc); 
+		BigDecimal vlResultParcelas = vlResult.divide(nrParc);
+		
+		System.out.println("Juros total:  " + vlResult);
+		System.out.println("Valor parcela: " + vlResultParcelas);
 
-		System.out.println("Financiamento adicionado na TB_FINAN com sucesso!");
-
+		
 	}
 }
