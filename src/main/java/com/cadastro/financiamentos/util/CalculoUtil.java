@@ -13,7 +13,7 @@ public class CalculoUtil {
 		BigDecimal vlTaxa = financiamento.getValorFinanciamentoTaxa();
 		BigDecimal vlFinan = financiamento.getValorFinanciamento();
 		
-		BigDecimal vlResult = vlFinan * vlTaxa * nrParc; 
+	//	BigDecimal vlResult = vlFinan * vlTaxa * nrParc; 
 		
 
 	}		

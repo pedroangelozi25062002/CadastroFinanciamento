@@ -30,33 +30,8 @@ public class FinanciamentoService {
 	}
 
 	public void salvar(FinanciamentoDTO financiamento) throws ParseException {
-
 		
-		FinanciamentoEntity finanEntity = financiamento.build(financiamento);
-
-	    CalculoUtil calculoUtil = new CalculoUtil();
-		
-		financiamentoRepository.save(finanEntity);
-
-		for (int i = 0; i < financiamento.getnParcelas().intValue(); ++i) {
-			
-			ParcelaEntity parcelaEntity = new ParcelaEntity();
-			
-			DateUtils dateUtils = new DateUtils();
-			
-			Date d2 = dateUtils.addDate(Calendar.MONTH, i, financiamento.getDataPrimeiraParcela());
-			
-			parcelaEntity.setVlParcela(financiamento.getValorParcelas());
-			parcelaEntity.setVlJurosParcela(financiamento.getValorFinanciamentoTaxa());
-			parcelaEntity.setDtPagamentoParcela(d2);
-			parcelaEntity.setFinanciamento(finanEntity);
-			
-			
-			parcelaRepository.save(parcelaEntity);
-
-			System.out.println("ADICIONADA A TB_PARCELA COM SUCESSO");
-		}
-		
+		FinanciamentoEntity finanEntity = financiamento.build(financiamento);		
 		
 		//CalculoJurosCompostos
 		BigDecimal nrParc = financiamento.getnParcelas();		
@@ -66,9 +41,35 @@ public class FinanciamentoService {
 		BigDecimal vlResult = vlFinan.multiply(vlTaxaa).multiply(nrParc); 
 		BigDecimal vlResultParcelas = vlResult.divide(nrParc);
 		
+		BigDecimal vlResult2 = nrParc.divide(vlFinan);
+		
+		BigDecimal vlResult3 = vlResultParcelas.add(vlResult2);
+		
 		System.out.println("Juros total:  " + vlResult);
-		System.out.println("Valor parcela: " + vlResultParcelas);
+		System.out.println("Juros mensal: " + vlResultParcelas);
+		System.out.println("Juros mensal + valor parcela: " +  vlResult3);
+				
+		financiamentoRepository.save(finanEntity);		
+		
+		for (int i = 1; i < financiamento.getnParcelas().intValue(); ++i) {
+			
+			ParcelaEntity parcelaEntity = new ParcelaEntity();
+			
+			DateUtils dateUtils = new DateUtils();
+			
+			Date d2 = dateUtils.addDate(Calendar.MONTH, i, financiamento.getDataPrimeiraParcela());
+			
+			parcelaEntity.setVlParcela(vlResult3);
+			parcelaEntity.setDtPagamentoParcela(d2);
+			parcelaEntity.setVlJurosParcela(vlResultParcelas);
+			parcelaEntity.setFinanciamento(finanEntity);
+						
+			parcelaRepository.save(parcelaEntity);
 
+		}
+		
+		System.out.println("ADICIONADA A TB_PARCELA COM SUCESSO");
+		
 		
 	}
 }

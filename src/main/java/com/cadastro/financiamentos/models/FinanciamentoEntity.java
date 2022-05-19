@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -44,9 +45,12 @@ public class FinanciamentoEntity implements Serializable {
 	@Column(name = "DT_CRIACAO_FINANCIAMENTO")
 	private Date dtCriacaoFinanciamento;
     
+	public FinanciamentoEntity() {
+		
+	}
 	
-	 @OneToMany(mappedBy = "financiamento", targetEntity = ParcelaEntity.class, fetch = FetchType.LAZY)
-	 private List<ParcelaEntity> parcela;
+	@OneToMany(mappedBy = "financiamento", targetEntity = ParcelaEntity.class, fetch = FetchType.LAZY)
+	private List<ParcelaEntity> parcela;
 
 
 	public Integer getIdFinanciamento() {

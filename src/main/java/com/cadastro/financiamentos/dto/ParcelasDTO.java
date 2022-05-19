@@ -10,23 +10,17 @@ public class ParcelasDTO {
 
 	private Integer idParcela;
 	
-	private Double vl_parcela;
+	private BigDecimal vlParcela;
 	
-	private BigDecimal vl_juros_parcela;
+	private BigDecimal vlJurosParcela;
 		
-	private Date dt_pagamento_parcela;
+	private Date dtPagamentoParcela;
 
-	
-	
 
-	
-	
 
 	public Integer getIdParcela() {
 		return idParcela;
 	}
-
-
 
 
 
@@ -36,53 +30,39 @@ public class ParcelasDTO {
 
 
 
-
-
-	public Double getVl_parcela() {
-		return vl_parcela;
+	public BigDecimal getVlParcela() {
+		return vlParcela;
 	}
 
 
 
-
-
-	public void setVl_parcela(Double vl_parcela) {
-		this.vl_parcela = vl_parcela;
+	public void setVlParcela(BigDecimal vlParcela) {
+		this.vlParcela = vlParcela;
 	}
 
 
 
-
-
-	public BigDecimal getVl_juros_parcela() {
-		return vl_juros_parcela;
+	public BigDecimal getVlJurosParcela() {
+		return vlJurosParcela;
 	}
 
 
 
-
-
-	public void setVl_juros_parcela(BigDecimal vl_juros_parcela) {
-		this.vl_juros_parcela = vl_juros_parcela;
+	public void setVlJurosParcela(BigDecimal vlJurosParcela) {
+		this.vlJurosParcela = vlJurosParcela;
 	}
 
 
 
-
-
-	public Date getDt_pagamento_parcela() {
-		return dt_pagamento_parcela;
+	public Date getDtPagamentoParcela() {
+		return dtPagamentoParcela;
 	}
 
 
 
-
-
-	public void setDt_pagamento_parcela(Date dt_pagamento_parcela) {
-		this.dt_pagamento_parcela = dt_pagamento_parcela;
+	public void setDtPagamentoParcela(Date dtPagamentoParcela) {
+		this.dtPagamentoParcela = dtPagamentoParcela;
 	}
-
-
 
 
 
@@ -91,9 +71,9 @@ public class ParcelasDTO {
 		ParcelaEntity entityParcela = new ParcelaEntity();
 		
 		entityParcela.setIdParcela(dtoParcela.getIdParcela());
-		entityParcela.setVlJurosParcela(dtoParcela.getVl_juros_parcela());
-		entityParcela.setVlParcela(dtoParcela.getVl_parcela());
-		entityParcela.setDtPagamentoParcela(dtoParcela.getDt_pagamento_parcela());
+		entityParcela.setVlJurosParcela(dtoParcela.getVlJurosParcela());
+		entityParcela.setVlParcela(dtoParcela.getVlParcela());
+		entityParcela.setDtPagamentoParcela(dtoParcela.getDtPagamentoParcela());
 		
 		
 		return entityParcela;

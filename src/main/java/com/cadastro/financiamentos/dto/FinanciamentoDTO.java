@@ -1,9 +1,11 @@
 package com.cadastro.financiamentos.dto;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
+import com.cadastro.financiamentos.service.FinanciamentoService;
 
 public class FinanciamentoDTO {
 
@@ -84,11 +86,14 @@ public class FinanciamentoDTO {
 	public FinanciamentoEntity build(FinanciamentoDTO dto) {
 		
 		FinanciamentoEntity entity = new FinanciamentoEntity();
+		FinanciamentoService service = new FinanciamentoService(null, null);
+		
+		Date dataHoraAtual = new Date();
 		
 		entity.setVlTotalFinanciamento(dto.getValorFinanciamento());
 		entity.setVlEntradaFinanciamento(dto.getValorParcelas());
 		entity.setNrParcelasFinanciamento(dto.getnParcelas());
-		entity.setDtPrimeiraParcelaFinanciamento(dto.getDataPrimeiraParcela());
+		entity.setDtPrimeiraParcelaFinanciamento(dataHoraAtual);
 		entity.setVlFinanciamentoTaxa(dto.getValorFinanciamentoTaxa());
 		
 		
