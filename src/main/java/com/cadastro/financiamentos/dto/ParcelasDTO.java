@@ -10,9 +10,9 @@ public class ParcelasDTO {
 
 	private Integer idParcela;
 	
-	private BigDecimal vlParcela;
+	private Double vlParcela;
 	
-	private BigDecimal vlJurosParcela;
+	private Double vlJurosParcela;
 		
 	private Date dtPagamentoParcela;
 
@@ -30,25 +30,25 @@ public class ParcelasDTO {
 
 
 
-	public BigDecimal getVlParcela() {
+	public Double getVlParcela() {
 		return vlParcela;
 	}
 
 
 
-	public void setVlParcela(BigDecimal vlParcela) {
+	public void setVlParcela(Double vlParcela) {
 		this.vlParcela = vlParcela;
 	}
 
 
 
-	public BigDecimal getVlJurosParcela() {
+	public Double getVlJurosParcela() {
 		return vlJurosParcela;
 	}
 
 
 
-	public void setVlJurosParcela(BigDecimal vlJurosParcela) {
+	public void setVlJurosParcela(Double vlJurosParcela) {
 		this.vlJurosParcela = vlJurosParcela;
 	}
 

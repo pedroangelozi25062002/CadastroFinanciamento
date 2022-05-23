@@ -1,6 +1,7 @@
 package com.cadastro.financiamentos.service;
 
 import java.math.BigDecimal;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -12,9 +13,7 @@ import com.cadastro.financiamentos.dto.FinanciamentoDTO;
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
 import com.cadastro.financiamentos.models.ParcelaEntity;
 import com.cadastro.financiamentos.repository.FinanciamentoRepository;
-import com.cadastro.financiamentos.repository.ParcelaRepository;
-import com.cadastro.financiamentos.util.CalculoUtil;
-import com.cadastro.financiamentos.util.DateUtils;
+import com.cadastro.financiamentos.repository.ParcelaRepository;import com.cadastro.financiamentos.util.DateUtils;
 
 @Component
 public class FinanciamentoService {
@@ -34,16 +33,16 @@ public class FinanciamentoService {
 		FinanciamentoEntity finanEntity = financiamento.build(financiamento);		
 		
 		//CalculoJurosCompostos
-		BigDecimal nrParc = financiamento.getnParcelas();		
-		BigDecimal vlTaxaa = financiamento.getValorFinanciamentoTaxa();
-		BigDecimal vlFinan = financiamento.getValorFinanciamento();
+		Integer nrParc = financiamento.getnParcelas();
+		Double nrParc2 = (double) nrParc;
+		Double vlParc = financiamento.getValorParcelas();
+		Double vlTaxaa = financiamento.getValorFinanciamentoTaxa();
+		Double vlFinan = financiamento.getValorFinanciamento();
 		
-		BigDecimal vlResult = vlFinan.multiply(vlTaxaa).multiply(nrParc); 
-		BigDecimal vlResultParcelas = vlResult.divide(nrParc);
+		Double vlResult = vlFinan * vlTaxaa * nrParc2; 
+		Double vlResultParcelas = vlResult/nrParc;
 		
-		BigDecimal vlResult2 = nrParc.divide(vlFinan);
-		
-		BigDecimal vlResult3 = vlResultParcelas.add(vlResult2);
+		Double vlResult3 = vlResultParcelas+vlParc;
 		
 		System.out.println("Juros total:  " + vlResult);
 		System.out.println("Juros mensal: " + vlResultParcelas);

@@ -29,10 +29,10 @@ public class ParcelaEntity implements Serializable {
 	private Date dtPagamentoParcela ;
 	
 	@Column(name = "VL_PARCELA")
-	private BigDecimal vlParcela;
+	private Double vlParcela;
 	
 	@Column(name = "VL_JUROS_PARCELA")
-	private BigDecimal vlJurosParcela ;
+	private Double vlJurosParcela ;
 	
 	 @ManyToOne
 	 @JoinColumn(name="financiamento_id")
@@ -54,19 +54,19 @@ public class ParcelaEntity implements Serializable {
 		this.dtPagamentoParcela = dtPagamentoParcela;
 	}
 
-	public BigDecimal getVlParcela() {
+	public Double getVlParcela() {
 		return vlParcela;
 	}
 
-	public void setVlParcela(BigDecimal vlParcela) {
+	public void setVlParcela(Double vlParcela) {
 		this.vlParcela = vlParcela;
 	}
 
-	public BigDecimal getVlJurosParcela() {
+	public Double getVlJurosParcela() {
 		return vlJurosParcela;
 	}
 
-	public void setVlJurosParcela(BigDecimal vlJurosParcela) {
+	public void setVlJurosParcela(Double vlJurosParcela) {
 		this.vlJurosParcela = vlJurosParcela;
 	}
 

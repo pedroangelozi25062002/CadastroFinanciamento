@@ -1,36 +1,55 @@
 package com.cadastro.financiamentos.dto;
 
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.cadastro.financiamentos.models.FinanciamentoEntity;
-import com.cadastro.financiamentos.service.FinanciamentoService;
+import com.cadastro.financiamentos.models.TipoFinanciamentoEntity;
 
 public class FinanciamentoDTO {
 
-	private BigDecimal valorFinanciamento;
+	private Double valorFinanciamento;
 	
 	private Double valorParcelas;
 	
-	private BigDecimal valorFinanciamentoTaxa;
+	private Double valorFinanciamentoTaxa;
 	
-	private BigDecimal nParcelas;
-	
+	private Integer nParcelas;
+		
+	private Integer tipoFinanciamento;
+
 	private Date dataPrimeiraParcela;
 	
-	
-	
-	
-	public BigDecimal getValorFinanciamento() {
+
+
+	public Date getDataPrimeiraParcela() {
+		return dataPrimeiraParcela;
+	}
+
+
+
+
+
+	public void setDataPrimeiraParcela(Date dataPrimeiraParcela) {
+		this.dataPrimeiraParcela = dataPrimeiraParcela;
+	}
+
+
+
+
+
+	public Double getValorFinanciamento() {
 		return valorFinanciamento;
 	}
 
 
 
-	public void setValorFinanciamento(BigDecimal valorFinanciamento) {
+
+
+	public void setValorFinanciamento(Double valorFinanciamento) {
 		this.valorFinanciamento = valorFinanciamento;
 	}
+
+
 
 
 
@@ -40,62 +59,79 @@ public class FinanciamentoDTO {
 
 
 
+
+
 	public void setValorParcelas(Double valorParcelas) {
 		this.valorParcelas = valorParcelas;
 	}
 
 
 
-	public BigDecimal getnParcelas() {
-		return nParcelas;
-	}
 
 
-
-	public void setnParcelas(BigDecimal nParcelas) {
-		this.nParcelas = nParcelas;
-	}
-
-
-
-	public Date getDataPrimeiraParcela() {
-		return dataPrimeiraParcela;
-	}
-
-
-
-	public void setDataPrimeiraParcela(Date dataPrimeiraParcela) {
-		this.dataPrimeiraParcela = dataPrimeiraParcela;
-	}
-	
-
-
-
-	public BigDecimal getValorFinanciamentoTaxa() {
+	public Double getValorFinanciamentoTaxa() {
 		return valorFinanciamentoTaxa;
 	}
 
 
 
-	public void setValorFinanciamentoTaxa(BigDecimal valorFinanciamentoTaxa) {
+
+
+	public void setValorFinanciamentoTaxa(Double valorFinanciamentoTaxa) {
 		this.valorFinanciamentoTaxa = valorFinanciamentoTaxa;
 	}
+
+
+
+
+
+	public Integer getnParcelas() {
+		return nParcelas;
+	}
+
+
+
+
+
+	public void setnParcelas(Integer nParcelas) {
+		this.nParcelas = nParcelas;
+	}
+
+
+
+
+
+	public Integer getTipoFinanciamento() {
+		return tipoFinanciamento;
+	}
+
+
+
+
+
+	public void setTipoFinanciamento(Integer tipoFinanciamento) {
+		this.tipoFinanciamento = tipoFinanciamento;
+	}
+
+
 
 
 
 	public FinanciamentoEntity build(FinanciamentoDTO dto) {
 		
 		FinanciamentoEntity entity = new FinanciamentoEntity();
-		FinanciamentoService service = new FinanciamentoService(null, null);
 		
 		Date dataHoraAtual = new Date();
 		
 		entity.setVlTotalFinanciamento(dto.getValorFinanciamento());
 		entity.setVlEntradaFinanciamento(dto.getValorParcelas());
 		entity.setNrParcelasFinanciamento(dto.getnParcelas());
-		entity.setDtPrimeiraParcelaFinanciamento(dataHoraAtual);
+		entity.setDtCriacaoFinanciamento(dataHoraAtual);
 		entity.setVlFinanciamentoTaxa(dto.getValorFinanciamentoTaxa());
 		
+		TipoFinanciamentoEntity tipoFinan = new TipoFinanciamentoEntity();
+		tipoFinan.setIdTipoFinanciamento(dto.getTipoFinanciamento());
+		entity.setTipoFinanciamentoEntity(tipoFinan);
 		
 		return entity;
 	}

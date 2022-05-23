@@ -29,12 +29,12 @@ public class TipoFinanciamentoEntity implements Serializable {
 	private Integer idTipoFinanciamento;
 	
 	@Column(name = "DS_TP_FINANCIAMENTO")
-	private Date dsTipoFinanciamento;
+	private String dsTipoFinanciamento;
 	 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CD_TP_FINANCIAMENTO")
-	private FinanciamentoEntity financiamento;
-
+	public TipoFinanciamentoEntity() {
+		
+	}
+	
 	public Integer getIdTipoFinanciamento() {
 		return idTipoFinanciamento;
 	}
@@ -43,21 +43,14 @@ public class TipoFinanciamentoEntity implements Serializable {
 		this.idTipoFinanciamento = idTipoFinanciamento;
 	}
 
-	public Date getDsTipoFinanciamento() {
+	public String getDsTipoFinanciamento() {
 		return dsTipoFinanciamento;
 	}
 
-	public void setDsTipoFinanciamento(Date dsTipoFinanciamento) {
+	public void setDsTipoFinanciamento(String dsTipoFinanciamento) {
 		this.dsTipoFinanciamento = dsTipoFinanciamento;
 	}
 
-	public FinanciamentoEntity getFinanciamento() {
-		return financiamento;
-	}
-
-	public void setFinanciamento(FinanciamentoEntity financiamento) {
-		this.financiamento = financiamento;
-	}
 
 	
 	
